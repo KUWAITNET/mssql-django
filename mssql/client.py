@@ -43,7 +43,7 @@ class DatabaseClient(BaseDatabaseClient):
             if defaults_file:
                 args += ["-i", defaults_file]
 
-            args += ["TrustServerCertificate", "yes"]
+            args += ["-C"]
         else:
             dsn = options.get('dsn', '')
             args = ['%s -v %s %s %s' % (cls.executable_name, dsn, user, password)]
