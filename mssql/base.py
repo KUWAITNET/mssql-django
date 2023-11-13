@@ -363,6 +363,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
             }
         while conn is None:
             try:
+                args["TrustServerCertificate"] = "yes"
                 conn = Database.connect(connstr, **args)
             except Exception as e:
                 for error_number in self._transient_error_numbers:
@@ -609,7 +610,6 @@ class CursorWrapper(object):
 
                 else:
                     fp.append(p)
-
         return tuple(fp)
 
     def execute(self, sql, params=None):
